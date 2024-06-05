@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-6">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card rounded-0">
+                    <div class="card-header text-green text-center">
+                        <a routerLink="/home"><img src="assets/img/eco-novo.jpeg" alt="eco" class="logo"></a>
+                        <h2>Faça seu cadastro</h2>
+                    </div>
+                    <div class="card-body">
+                        <form (submit)="finalizarCadastro()">
+                            <div class="form-group">
+                                <label for="tipoCliente">Tipo de Cliente:</label>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="tipoCliente"[(ngModel)]="tipoCliente" value="usuario" (ngModelChange)="tipoClienteSelecionado()"> Usuário
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="tipoCliente"  [(ngModel)]="tipoCliente" value="parceiro" (ngModelChange)="tipoClienteSelecionado()"> Parceiro
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nome">Nome:</label>
+                                <input type="text" id="nome" class="form-control" name="nome"[(ngModel)]="nome" (ngModelChange)="converterParaMaiusculas('nome')" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataNascimento">Data de Nascimento:</label>
+                                <input type="date" id="dataNascimento" class="form-control" name="dataNascimento" [(ngModel)]="dataNascimento" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cpf">CPF:</label>
+                                <input type="text" id="cpf" class="form-control" name="cpf" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" placeholder="Digite um CPF válido (xxx.xxx.xxx-xx)" [(ngModel)]="cpf" (ngModelChange)="validaCpfOnChange()" required>
+                            <div *ngIf="cpfInvalido" name="campo_invalido" style="color: red;">CPF inválido</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone:</label>
+                                <input type="text" id="telefone" class="form-control" name="telefone" [(ngModel)]="telefone" (input)="validaTelefoneOnInput()" placeholder= "(DDD + número)"required>
+                                <div *ngIf="telefoneInvalido" name="campo_invalido" style="color: red;">Telefone inválido</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cep">CEP:</label>
+                                <input type="text" id="cep" class="form-control" name="cep" [(ngModel)]="cep" required>
+                                <div *ngIf="cepInvalido" name="campo_invalido" style="color: red;">CEP inválido</div>
+                                <br>
+                                <button (click)="buscarEnderecoPorCEP()" class="btn btn-primary" type="button">Buscar Endereço</button>
+                            </div>
+                            <div class="form-group">
+                                <label for="enderecoCompleto">Endereço:</label>
+                                <input type="text" id="enderecoCompleto" class="form-control" name="enderecoCompleto" [(ngModel)]="enderecoCompleto" placeholder="Rua/Av. Exemplo, 123, Bairro, Cidade, UF"required>
+                            </div>
+                            <div class="form-group">
+                                <label for="numero">Número:</label>
+                            <input type="text" id="numero" class="form-control" name="numero" [(ngModel)]="numero" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="complemento">Complemento:</label>
+                                <input type="text" id="complemento" class="form-control" name="complemento" [(ngModel)]="complemento">
+                            </div>
+                            <div *ngIf="tipoCliente === 'parceiro'">
+                                <div class="form-group">
+                                    <label for="nomeEmpresa">Nome da Empresa:</label>
+                                    <input type="text" id="nomeEmpresa" class="form-control" name="nomeEmpresa" [(ngModel)]="nomeEmpresa" [disabled]="tipoCliente !== 'parceiro'">>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cnpj">CNPJ:</label>
+                                    <input type="text" id="cnpj" class="form-control" name="cnpj" [(ngModel)]="cnpj" (ngModelChange)="validarCNPJ()" [disabled]="tipoCliente !== 'parceiro'">
+                                </div>
+                                <div *ngIf="cnpjInvalido" style="color: red;">CNPJ inválido</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail:</label>
+                                <input type="email" id="email" class="form-control" name="email"  [(ngModel)]="email" (ngModelChange)="converterParaMaiusculas('email')" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="senha">Crie sua senha:</label>
+                                <div class="input-group">
+                                    <input type="password" id="senha" class="form-control" name="senha" [type]="showPasswordSenha ? 'text' : 'password'" [(ngModel)]="senha" required>
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility('senha')">
+                                            <i class="{{showPasswordSenha ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmarSenha">Confirme sua senha:</label>
+                                <div class="input-group">
+                                    <input type="password" id="confirmarSenha" class="form-control" name="confirmarSenha" [type]="showPasswordConfirmarSenha ? 'text' : 'password'" [(ngModel)]="confirmarSenha" required (ngModelChange)="validarSenhas()">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility('confirmarSenha')">
+                                            <i class="{{showPasswordConfirmarSenha ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+                                        </button>
+                                    </div>
+                                    <br>
+                                    <div *ngIf="senhasDiferentes" style="color: red;">As senhas não são iguais.</div>
+                                </div>
+                            </div>                            
+                            <button type="submit" class="btn btn-primary">Finalizar Cadastro</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

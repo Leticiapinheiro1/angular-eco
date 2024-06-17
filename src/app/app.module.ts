@@ -9,6 +9,8 @@ import { LoginComponent } from './acesso/login/login.component';
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { HomeComponent } from './acesso/home/home.component';
 import { PegadaComponent } from './pegada/pegada.component';
+import { FooterComponent } from './templates/footer/footer.component';
+import { NavbarComponent } from './templates/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { PegadaComponent } from './pegada/pegada.component';
     LoginComponent,
     CadastroComponent,
     HomeComponent,
-    PegadaComponent
+    PegadaComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

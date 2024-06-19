@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './guards/auth.guard';
 import {HomeComponent} from './acesso/home/home.component'
 import { LoginComponent } from './acesso/login/login.component';
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
@@ -15,11 +16,11 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
-  { path: 'pegada/:id', component: PegadaComponent },
+  { path: 'pegada', component: PegadaComponent},
   { path: 'contato', component: ContatoComponent },
   { path: 'legislacao', component: LegislacaoComponent },
   { path: 'ecoVoucher-sobre', component: EcoVoucherSobreComponent },
-  { path: 'pontuacao', component: PontuacaoComponent },
+  { path: 'pontuacao', component: PontuacaoComponent, canActivate: [AuthGuard] },
   { path: 'ods', component: OdsComponent  }
 ];
 

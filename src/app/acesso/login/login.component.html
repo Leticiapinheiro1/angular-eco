@@ -1,30 +1,40 @@
 <body>
   <a routerLink="/home"><img src="assets/img/eco-novo.jpeg" alt="Logotipo" class="img-fluid logo"></a>
+    <div class="container2">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center"> <!-- Adicione `text-center` aqui -->
+                <a href="index.html"><img src="IMAGENS/img/eco-novo.jpeg" alt="Logotipo" class="logo"></a>
+            </div>
+        </div>
+    </div>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card rounded-0">
                     <div class="card-body">
-                        <form (submit)="login()">
+                        <form id="login-form">
                             <div class="form-group">
-                                <label for="email">Cpf / Cnpj:</label>
-                                <input type="text" id="email" class="form-control" name="email" required [(ngModel)]="cpfOuCnpj">
+                                <label for="cpfOuCnpj">Cpf / Cnpj:</label>
+                                <input type="text" id="cpfOuCnpj" class="form-control" name="cpfOuCnpj" required>
+                                <div class="invalid-feedback" id="cpfCnpjMessage"></div>
                             </div>
                             <div class="form-group">
                                 <label for="senha">Senha:</label>
                                 <div class="input-group">
-                                    <input type="{{showPassword ? 'text' : 'password'}}"  id="senha1"  class="form-control" name="senha1" required pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="A senha deve conter pelo menos 8 caracteres, incluindo letras, números e pelo menos um caractere especial." [(ngModel)]="senha">
+                                    <input type="password" id="senha" class="form-control" name="senha" required disabled>
                                     <div class="input-group-append">
-                                        <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility1()">
-                                            <i class="{{showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+                                        <button type="button" class="btn btn-outline-secondary" id="toggle-password-visibility">
+                                            <i class="fa fa-eye-slash"></i>
                                         </button>
                                     </div>
                                 </div>
+                                <!-- Elemento para a mensagem de validação de Senha -->
+                                <div id="passwordMessage" class="invalid-feedback"></div>
                                 <div class="forgot-password">
-                                    <a routerLink="">Esqueceu a senha?</a>
+                                    <a href="#">Esqueceu a senha?</a>
                                 </div>
                                 <div class="signup">
-                                    <a routerLink="/cadastro">Faça seu cadastro!</a>
+                                    <a href="/cadastro">Faça seu cadastro!</a>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Entrar</button>
@@ -34,6 +44,10 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./js/login.js" type="module"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

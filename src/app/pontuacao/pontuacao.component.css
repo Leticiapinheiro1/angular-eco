@@ -1,0 +1,88 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    background-attachment: fixed;
+    letter-spacing: 1px;
+    color: #6d6a6a;
+    text-decoration: none;
+}
+
+body {
+    background-image: linear-gradient(to bottom,#B7ED9E, white);
+    background-color: #f1f1f1;
+}
+
+.tabela {
+    text-align: center;
+    align-items: center;
+    justify-content: center
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: #676767;
+}
+
+table {
+    width: 80%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+table,
+th,
+td {
+    border: 1px solid #ae7e7e;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #1ac157;
+    color: white;
+}
+
+.form-group {
+    margin: 20px;
+    text-align: center;
+}
+
+select,
+input[type="number"] {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 200px;
+}
+
+button {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}

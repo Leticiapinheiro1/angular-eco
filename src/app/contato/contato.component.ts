@@ -36,6 +36,10 @@ export class ContatoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const script = document.createElement('script');
+    script.src = 'assets/js/login.js';
+    script.async = true;
+    document.body.appendChild(script);
     this.loadContatosFromCookies();
   }
 

@@ -8,7 +8,7 @@ import { Parceiro } from '../parceiros/models/parceiro';
   providedIn: 'root'
 })
 export class AcessosService {
-  private apiUrl = 'http://localhost:9090/'; // Substitua pela URL da sua API
+  private apiUrl = 'http://localhost:9090/';
 
   constructor(private http: HttpClient) {} // Inject the HttpClient here
 

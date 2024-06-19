@@ -17,6 +17,11 @@ export class CadastroComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    const script = document.createElement('script');
+    script.src = 'assets/js/cadastro.js';
+    script.async = true;
+    document.body.appendChild(script);
+  
     this.cadastroForm = this.fb.group({
       tipoCliente: ['usuario', Validators.required],
       nome: ['', Validators.required],

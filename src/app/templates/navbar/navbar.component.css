@@ -5,7 +5,9 @@ header {
     display: flex;
     width: 100%;
     background-color: hsl(0, 0%, 100%);
-
+    padding: 10px 0;
+    color: #565454;
+    /* Adiciona espaço ao redor do conteúdo do header */
 }
 
 #marca {
@@ -25,29 +27,28 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-
+    font-size: 16px;
 
 }
 
 .superior {
     display: flex;
     justify-content: center;
+    gap: 20px;
+    /* Espaço entre os links */
 }
 
 /* Adiciona estilo aos ícones dentro dos links */
-.superior a .fas {
-    margin-right: 5px;
-    /* Espaço entre o ícone e o texto */
-    font-size: 16px;
-    /* Tamanho do ícone */
-    color: #333;
-    /* Cor do ícone */
+.sup .superior .link i {
+    color: #454545;
+    font-size: 1.5em; /* Aumenta o tamanho dos ícones, ajuste conforme necessário */
+    margin-left: 5px; /* Espaço entre o texto e o ícone */
+    vertical-align: middle; /* Alinha verticalmente com o texto */
 }
 
 /* Ajuste específico para hover ou outras interações */
-.superior a:hover .fas {
-    color: #07781a;
-    /* Cor do ícone ao passar o mouse */
+.sup .superior .link:hover, .sup .superior .link i:hover {
+    color: rgb(23, 131, 11);
 }
 
 .link {
@@ -56,12 +57,13 @@ header {
     margin-right: 15%;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
-    color: black;
+    color: rgb(88, 87, 87);
     font-size: large;
 }
 
+
 .redesocial {
-    width: 15%;
+    width: 18%;
     justify-content: end;
     text-align: end;
     align-items: flex-end;
@@ -69,45 +71,48 @@ header {
     margin-right: 1%;
 }
 
-a:hover {
-    color: rgb(23, 131, 11);
-}
+
+
 @media screen and (min-width: 40in) {
     .link {
         font-size: 24px;
-        margin-left: 40%;
-        margin-right: 40%;
     }
     
-    h1{
-    font-size: 40px;
-    
-      }
-    footer{
-      padding: 3%;
-    }
-    footer a{
-      font-size: 24px;
-    }
-    .botaoredondo{
-      width: 180px;
-      height: 180px;
-    }
-      }
-    @media (max-width: 1200px){
-      .conteudo {
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-      }
-      .social-icons{
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
-          size: 5px;
-          gap: 3rem;
-    
-      }
-    
+    h1 {
+        font-size: 40px;
     }
     
+    footer {
+        padding: 3%;
+    }
+    
+    footer a {
+        font-size: 24px;
+    }
+    
+    .botaoredondo {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .sup {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .link {
+        margin: 10px 0; /* Ajusta os links para layout em coluna */
+    }
+    
+    .redesocial {
+        width: 100%;
+        justify-content: center;
+        gap: 10px; /* Espaço entre ícones sociais */
+    }
+
+    .redesocial img {
+        width: 40px; /* Tamanho maior para ícones sociais em telas menores */
+    }
+}

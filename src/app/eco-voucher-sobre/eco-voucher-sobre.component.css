@@ -1,57 +1,58 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+.page-content {
+    padding: 20px;
     background-image: linear-gradient(to bottom,#B7ED9E, white);
-    background-attachment: fixed;
-    letter-spacing: 1px;
     color: #616161;
-    text-decoration: none;
-    }        
-    .titulo h1 {
-        text-align: left;
-        margin-bottom: 20px;
+    border-radius: 8px; /* Adiciona bordas arredondadas para um efeito visual */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+}
+
+.titulo h1 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.texto {
+    max-width: 1000px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+}
+
+.texto h2 {
+    text-align: center;
+}
+
+/* Flexbox para o vídeo */
+.conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.conteudo-video {
+    width: 100%;
+    max-width: 860px;
+}
+
+.conteudo-video iframe {
+    width: 100%;
+    height: 480px; /* Altura padrão para o vídeo */
+}
+
+@media (max-width: 768px) {
+    .texto {
+        max-width: 100%;
+        padding: 0 10px;
     }
 
-    .texto {
-        max-width: 1000px; /* Ajuste a largura conforme necessário */
-        margin: 0 auto 20px; /* Centraliza e adiciona margem inferior */
-        padding: 0 20px; /* Adiciona preenchimento para evitar que o texto toque as bordas da tela */
-    }
-    
-    .texto h2 {
-        text-align: center;
-    }
-    
-    /* Flexbox para o vídeo */
-    .conteudo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-    }
-    
     .conteudo-video {
-        width: 100%;
-        max-width: 860px;
+        max-width: 100%;
     }
-    
+
     .conteudo-video iframe {
-        width: 100%;    
-        height: 100%;
+        height: 240px; /* Ajuste a altura para dispositivos móveis */
     }
-    
-    @media (max-width: 768px) {
-        .texto {
-            max-width: 100%;
-            padding: 0 10px;
-        }
-    
-        .conteudo-video {
-            max-width: 100%;
-        }
-    }
+}

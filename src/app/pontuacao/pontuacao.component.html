@@ -1,34 +1,41 @@
 <body>
-    <br>
-    <div clas="tabela">
-        <h1>Tabela de Materiais Recicláveis</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tipo de Material</th>
-                    <th>Pontos por 100mg</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let material of materiais">
-                    <td>{{ material.nome }}</td>
-                    <td>{{ material.pontos }} pontos</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Calcular Pontos</h2>
-        <div class="form-group">
-            <label for="material">Escolha o material:</label>
-            <select id="material" [(ngModel)]="materialSelecionado">
-                <option *ngFor="let material of materiais" [value]="material.pontos">{{ material.nome }}</option>
-            </select>
+    <div class="centralizar">
+        <div class="tabela">
+            <br>
+            <h1>Tabela de Materiais Recicláveis</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Material</th>
+                        <th>Pontos por 100g</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let material of materiais">
+                        <td>{{ material.nome }}</td>
+                        <td>{{ material.pontos }} pontos</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <h2>Calcular Pontos</h2>
+            <div class="form-group">
+                <label for="material">Escolha o material:</label>
+                <select id="material" [(ngModel)]="materialSelecionado">
+                    <option *ngFor="let material of materiais" [value]="material.pontos">{{ material.nome }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="peso">Digite o peso em g:</label>
+                <input type="number" id="peso" [(ngModel)]="peso" placeholder="Peso em g">
+            </div>
+            <button (click)="calcularPontos()">Calcular Pontos</button>
+            <br>
+            <h3 *ngIf="pontosTotais !== null">Pontos Totais: {{ pontosTotais.toFixed(2) }} pontos</h3>
+            <br>
+            <br>
+            <br>
         </div>
-        <div class="form-group">
-            <label for="peso">Digite o peso em mg:</label>
-            <input type="number" id="peso" [(ngModel)]="peso" placeholder="Peso em mg">
-        </div>
-        <button (click)="calcularPontos()">Calcular Pontos</button>
-        <h3 *ngIf="pontosTotais !== null">Pontos Totais: {{ pontosTotais.toFixed(2) }} pontos</h3>
     </div>
-    </body>
+
+</body>

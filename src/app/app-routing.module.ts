@@ -11,6 +11,8 @@ import { LegislacaoComponent } from './legislacao/legislacao.component';
 import { EcoVoucherSobreComponent } from './eco-voucher-sobre/eco-voucher-sobre.component';
 import { PontuacaoComponent } from './pontuacao/pontuacao.component';
 import { OdsComponent } from './ods/ods.component';
+import { PontosColetaComponent } from './pontos-coleta/pontos-coleta.component';
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,7 +23,8 @@ const routes: Routes = [
   { path: 'legislacao', component: LegislacaoComponent },
   { path: 'ecoVoucher-sobre', component: EcoVoucherSobreComponent },
   { path: 'pontuacao', component: PontuacaoComponent, canActivate: [AuthGuard] },
-  { path: 'ods', component: OdsComponent  }
+  { path: 'ods', component: OdsComponent  },
+  { path: 'pontos-coleta', component: PontosColetaComponent}
 ];
 
 @NgModule({

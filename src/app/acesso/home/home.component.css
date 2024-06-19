@@ -5,6 +5,7 @@ body {
   margin-right: -1%;
   margin-bottom: 0%;
   margin-top: 0%;
+  height: 71vh; /* Faz o body ocupar 100% da viewport */
 }
 
 main{

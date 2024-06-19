@@ -15,8 +15,19 @@
 body {
     background-image: linear-gradient(to bottom,#B7ED9E, white);
     background-color: #f1f1f1;
+    display: flex; /* Adicionado para usar flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Faz o body ocupar 100% da viewport */
 }
 
+.centralizar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Pode ajustar conforme necessário */
+}
 .tabela {
     text-align: center;
     align-items: center;
@@ -25,12 +36,12 @@ body {
 
 h1,
 h2 {
-    text-align: center;
+
     color: #676767;
 }
 
 table {
-    width: 80%;
+    width: 100%;
     text-align: center;
     align-items: center;
     justify-content: center;

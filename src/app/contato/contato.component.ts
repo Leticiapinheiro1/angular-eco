@@ -16,7 +16,7 @@ export class ContatoComponent implements OnInit {
   contatos: any[] = []; // Array para armazenar os contatos
   selectedContato: any; // Contato selecionado para edição
 
-@ViewChild('modalEditarContato', { static: true }) modalEditarContato!: ElementRef;
+  @ViewChild('modalEditarContato', { static: true }) modalEditarContato!: ElementRef;
 
   constructor(private fb: FormBuilder, private contatoService: ContatoService, private modalService: NgbModal) {
     this.contatoForm = this.fb.group({
@@ -96,13 +96,11 @@ export class ContatoComponent implements OnInit {
     deleteCookie(`contato_${id}`);
   }
 
-  openEditModal(contato: any): String {
-    
-    console.log(this.modalService);
-    this.modalService.open(this.modalEditarContato);
-    return '1';
+  openEditModal(contato: any): void {
+    console.log("Abrindo modal para o contato:", contato);
     this.selectedContato = contato;
     this.editForm.patchValue(contato); // Preencher o formulário com os dados do contato selecionado
+    console.log("Modal ElementRef:", this.modalEditarContato);
     this.modalService.open(this.modalEditarContato, { centered: true });
   }
 

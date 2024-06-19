@@ -1,11 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Inclua seu CSS personalizado aqui ou em um arquivo separado */
+  </style>
+</head>
+
 <body>
   <div class="superior">
     <div class="titulo">
       <br>
       <br>
-      <h1>
-        Dúvidas, reclamações, informações ou sugestões
-      </h1>
+      <h1>Dúvidas, reclamações, informações ou sugestões</h1>
     </div>
   </div>
   <div class="conteudo">
@@ -89,59 +100,56 @@
   </div>
 
   <!-- Modal para editar contato -->
-  <div class="modal fade" #modalEditarContato tabindex="-1" aria-labelledby="modalEditarContatoLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalEditarContatoLabel">Alterar contato</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="editForm">
-            <div class="mb-3">
-              <label for="modal-name" class="col-form-label">Nome:</label>
-              <input formControlName="name" type="text" class="form-control" id="modal-name">
-              <div
-                *ngIf="editForm.get('name')?.invalid && (editForm.get('name')?.dirty || editForm.get('name')?.touched)"
-                class="text-danger">
-                Nome é obrigatório e deve conter apenas letras.
-              </div>
+<div class="modal fade" #modalEditarContato tabindex="-1" aria-labelledby="modalEditarContatoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarContatoLabel">Alterar contato</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm">
+          <div class="mb-3">
+            <label for="modal-name" class="col-form-label">Nome:</label>
+            <input formControlName="name" type="text" class="form-control" id="modal-name">
+            <div *ngIf="editForm.get('name')?.invalid && (editForm.get('name')?.dirty || editForm.get('name')?.touched)" class="text-danger">
+              Nome é obrigatório e deve conter apenas letras.
             </div>
-            <div class="mb-3">
-              <label for="modal-email" class="col-form-label">Email:</label>
-              <input formControlName="email" type="text" class="form-control" id="modal-email">
-              <div
-                *ngIf="editForm.get('email')?.invalid && (editForm.get('email')?.dirty || editForm.get('email')?.touched)"
-                class="text-danger">
-                E-mail inválido.
-              </div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-email" class="col-form-label">Email:</label>
+            <input formControlName="email" type="text" class="form-control" id="modal-email">
+            <div *ngIf="editForm.get('email')?.invalid && (editForm.get('email')?.dirty || editForm.get('email')?.touched)" class="text-danger">
+              E-mail inválido.
             </div>
-            <div class="mb-3">
-              <label for="modal-telefone" class="col-form-label">Telefone:</label>
-              <input formControlName="telefone" type="text" class="form-control" id="modal-telefone">
-              <div
-                *ngIf="editForm.get('telefone')?.invalid && (editForm.get('telefone')?.dirty || editForm.get('telefone')?.touched)"
-                class="text-danger">
-                Telefone é inválido. Formato esperado: (DD) XXXX-XXXX ou (DD) XXXXX-XXXX
-              </div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-telefone" class="col-form-label">Telefone:</label>
+            <input formControlName="telefone" type="text" class="form-control" id="modal-telefone">
+            <div *ngIf="editForm.get('telefone')?.invalid && (editForm.get('telefone')?.dirty || editForm.get('telefone')?.touched)" class="text-danger">
+              Telefone é inválido. Formato esperado: (DD) XXXX-XXXX ou (DD) XXXXX-XXXX
             </div>
-            <div class="mb-3">
-              <label for="modal-mensagem" class="col-form-label">Mensagem:</label>
-              <textarea formControlName="mensagem" class="form-control" id="modal-mensagem"></textarea>
-              <div
-                *ngIf="editForm.get('mensagem')?.invalid && (editForm.get('mensagem')?.dirty || editForm.get('mensagem')?.touched)"
-                class="text-danger">
-                Mensagem é obrigatória.
-              </div>
+          </div>
+          <div class="mb-3">
+            <label for="modal-mensagem" class="col-form-label">Mensagem:</label>
+            <textarea formControlName="mensagem" class="form-control" id="modal-mensagem"></textarea>
+            <div *ngIf="editForm.get('mensagem')?.invalid && (editForm.get('mensagem')?.dirty || editForm.get('mensagem')?.touched)" class="text-danger">
+              Mensagem é obrigatória.
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary" (click)="onEditSubmit()">Salvar mudanças</button>
-        </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="onEditSubmit()">Salvar mudanças</button>
       </div>
     </div>
   </div>
+</div>
+  <!-- Scripts do Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
+</html>

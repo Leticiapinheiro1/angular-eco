@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
-  { path: 'pegada', component: PegadaComponent},
+  { path: 'pegada', component: PegadaComponent, canActivate: [AuthGuard] },
   { path: 'contato', component: ContatoComponent },
   { path: 'legislacao', component: LegislacaoComponent },
   { path: 'ecoVoucher-sobre', component: EcoVoucherSobreComponent },

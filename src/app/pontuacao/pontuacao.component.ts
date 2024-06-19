@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-pontuacao',
@@ -6,6 +7,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./pontuacao.component.css']
 })
 export class PontuacaoComponent {
+  constructor(private http: HttpClient) {}
+
+
+
+enviarParaAPI() {
+  let token = localStorage.getItem('authToken') || ''; // Provide an empty string as the default value for token
+  this.http.post('http://localhost:4000/api/pontuacao_pegada', { pontosTotais: this.pontosTotais }, { headers: { 'access-token': token } })
+    .subscribe(
+      response => {
+        console.log('Data sent successfully:', response);
+        // Handle the response from the API
+      },
+      error => {
+        console.error('Error sending data:', error);
+        // Handle the error
+      }
+    );
+  }
+
+
+
  // Lista de materiais recicláveis
  materiais = [
   { nome: 'Plástico', pontos: 10 },
@@ -22,6 +44,7 @@ pontosTotais: number | null = null;
 calcularPontos() {
   if (this.materialSelecionado !== null && this.peso !== null) {
     this.pontosTotais = (this.materialSelecionado / 100) * this.peso;
+    this.enviarParaAPI();
   } else {
     this.pontosTotais = null;
   }

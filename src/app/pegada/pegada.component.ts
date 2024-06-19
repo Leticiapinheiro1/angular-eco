@@ -12,6 +12,10 @@ export class PegadaComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router,private UsuarioService: UsuariosService) { }
   private usuario: Usuario = new Usuario();
   ngOnInit(): void {
+    const script = document.createElement('script');
+    script.src = 'assets/js/pegada.js';
+    script.async = true;
+    document.body.appendChild(script);
     this.usuario.setId(this.route.snapshot.params["id"]);
 }
   public calcularSoma() {
@@ -51,11 +55,11 @@ export class PegadaComponent implements OnInit {
       console.log('ok')
       //this.router.navigate(['/login']);
     });
-  } 
-  
+  }
+
   public deletar() {
     this.UsuarioService.deletar(this.usuario.getId()).subscribe((dados: any) => {
-    
+
       this.router.navigate(['/login']);
     });
   }
